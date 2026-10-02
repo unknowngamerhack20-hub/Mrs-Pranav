@@ -1,0 +1,1816 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Kavarchi Naayagan Pranav🖤</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   BASIC RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+
+    background:
+        radial-gradient(circle at 20% 10%, #fff5f8 0%, transparent 25%),
+        radial-gradient(circle at 80% 20%, #ffe1eb 0%, transparent 30%),
+        linear-gradient(135deg, #ffdce8, #fff0f5, #ffcbdc);
+
+    color: #542336;
+
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+#hearts,
+#bubbles {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -50px;
+
+    color: #e84d79;
+
+    opacity: 0.75;
+
+    animation: heartFloat linear forwards;
+}
+
+@keyframes heartFloat {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.7);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            rotate(180deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translateY(-120vh)
+            rotate(360deg)
+            scale(1.4);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   FLOATING BUBBLES
+========================================================= */
+
+.bubble {
+    position: absolute;
+
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.2);
+
+    border: 1px solid rgba(255,255,255,0.7);
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,0.6),
+        0 0 20px rgba(255,150,190,0.2);
+
+    animation: bubbleFloat linear forwards;
+}
+
+@keyframes bubbleFloat {
+
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.6;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            translateX(35px);
+    }
+
+    100% {
+        transform:
+            translateY(-120vh)
+            translateX(-40px);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   QUIZ PAGE
+========================================================= */
+
+#quizPage {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.quiz-card {
+
+    width: min(600px, 95%);
+
+    padding: 50px 35px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.72);
+
+    backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 30px 80px rgba(120,40,70,0.2);
+
+    animation: cardAppear 1s ease;
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(40px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.quiz-heart {
+
+    font-size: 65px;
+
+    color: #e84f7a;
+
+    animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+.quiz-small {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #b55c78;
+}
+
+.quiz-card h1 {
+
+    font-family: "Caveat", cursive;
+
+    font-size: clamp(45px, 8vw, 70px);
+
+    line-height: 1;
+
+    margin: 15px 0;
+}
+
+.quiz-card h1 span {
+
+    display: block;
+
+    color: #df416f;
+}
+
+.quiz-subtitle {
+
+    color: #805267;
+
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+}
+
+.question-number {
+
+    font-size: 12px;
+
+    color: #b55c78;
+
+    margin-bottom: 12px;
+}
+
+.question {
+
+    font-size: 22px;
+
+    margin-bottom: 25px;
+}
+
+.answers {
+
+    display: grid;
+
+    gap: 12px;
+}
+
+.answer {
+
+    padding: 15px 20px;
+
+    border-radius: 100px;
+
+    background: white;
+
+    color: #6d354a;
+
+    border: 1px solid #f0bfd0;
+
+    transition: 0.3s;
+}
+
+.answer:hover {
+
+    transform: translateY(-3px);
+
+    background: #ffe5ee;
+
+    box-shadow:
+        0 10px 25px rgba(220,70,120,0.15);
+}
+
+.quiz-success {
+
+    display: none;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 28px;
+
+    color: #d9406c;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   MAIN WEBSITE
+========================================================= */
+
+#mainPage {
+
+    display: none;
+
+    position: relative;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 50px 20px;
+}
+
+.eyebrow {
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+
+    color: #b35b77;
+}
+
+.hero h1 {
+
+    font-family: "Caveat", cursive;
+
+    font-size: clamp(50px, 9vw, 95px);
+
+    line-height: 0.95;
+
+    margin: 25px 0;
+}
+
+.hero h1 span {
+
+    display: block;
+
+    color: #dc416e;
+}
+
+.hero-description {
+
+    max-width: 550px;
+
+    line-height: 1.8;
+
+    color: #70465a;
+
+    font-size: 16px;
+}
+
+.open-letter {
+
+    margin-top: 35px;
+
+    padding: 16px 30px;
+
+    border-radius: 100px;
+
+    background: #e6537d;
+
+    color: white;
+
+    box-shadow:
+        0 15px 35px rgba(220,70,110,0.25);
+
+    transition: 0.3s;
+}
+
+.open-letter:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+}
+
+
+/* =========================================================
+   MEMORIES
+========================================================= */
+
+.memories {
+
+    min-height: 100vh;
+
+    padding: 100px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.section-label {
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-size: 11px;
+
+    color: #b45b78;
+}
+
+.memories h2 {
+
+    font-family: "Caveat", cursive;
+
+    font-size: 60px;
+
+    color: #d9426c;
+
+    margin: 10px 0 30px;
+}
+
+.photo-cloud {
+
+    width: min(850px, 95vw);
+
+    height: 550px;
+
+    position: relative;
+}
+
+.photo {
+
+    position: absolute;
+
+    width: 190px;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    padding: 8px;
+
+    background: white;
+
+    box-shadow:
+        0 20px 40px rgba(100,40,70,0.2);
+
+    transition: 0.5s;
+
+    animation: photoFloat 4s ease-in-out infinite;
+}
+
+.photo:hover {
+
+    transform:
+        scale(1.1)
+        rotate(0deg) !important;
+
+    z-index: 20;
+}
+
+.photo1 {
+
+    left: 8%;
+    top: 20px;
+
+    transform: rotate(-12deg);
+}
+
+.photo2 {
+
+    right: 8%;
+    top: 30px;
+
+    transform: rotate(11deg);
+
+    animation-delay: 1s;
+}
+
+.photo3 {
+
+    left: 20%;
+    bottom: 10px;
+
+    transform: rotate(8deg);
+
+    animation-delay: 2s;
+}
+
+.photo4 {
+
+    right: 20%;
+    bottom: 20px;
+
+    transform: rotate(-9deg);
+
+    animation-delay: 1.5s;
+}
+
+.photo5 {
+
+    left: 39%;
+    top: 150px;
+
+    transform: rotate(3deg);
+
+    animation-delay: 0.5s;
+}
+
+@keyframes photoFloat {
+
+    0%,100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -15px;
+    }
+}
+
+.center-heart {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    width: 105px;
+    height: 105px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.85);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 65px;
+
+    color: #e34d76;
+
+    box-shadow:
+        0 20px 50px rgba(210,60,100,0.2);
+
+    animation: heartbeat 1.5s infinite;
+}
+
+
+/* =========================================================
+   LOVE LETTER
+========================================================= */
+
+.letter-section {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px;
+}
+
+.letter {
+
+    position: relative;
+
+    width: min(820px, 95%);
+
+    padding: 75px 70px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf2,
+            #fff5dc
+        );
+
+    box-shadow:
+        0 30px 80px rgba(80,40,30,0.2);
+
+    transform: rotate(-1deg);
+
+    border-radius: 5px;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 23px;
+
+    line-height: 1.55;
+}
+
+.letter::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border: 1px solid rgba(180,130,100,0.25);
+
+    pointer-events: none;
+}
+
+.letter-date {
+
+    color: #a46a78;
+
+    margin-bottom: 10px;
+}
+
+.letter h2 {
+
+    font-size: 42px;
+
+    color: #b94362;
+
+    margin-bottom: 25px;
+}
+
+.letter p {
+
+    margin: 18px 0;
+}
+
+.special-line {
+
+    color: #d34469;
+
+    font-size: 28px;
+}
+
+.big-love {
+
+    text-align: center;
+
+    font-size: 65px;
+
+    color: #df426e;
+
+    margin: 30px 0 !important;
+}
+
+.signature {
+
+    text-align: right;
+
+    font-size: 29px;
+
+    margin-top: 40px !important;
+}
+
+.signature span {
+
+    color: #d8426c;
+}
+
+.letter-heart {
+
+    position: absolute;
+
+    color: #e56b89;
+
+    opacity: 0.5;
+
+    font-size: 55px;
+}
+
+.letter-heart.one {
+
+    top: 20px;
+    left: 25px;
+}
+
+.letter-heart.two {
+
+    top: 20px;
+    right: 25px;
+}
+
+.letter-heart.three {
+
+    bottom: 20px;
+    left: 25px;
+}
+
+.letter-heart.four {
+
+    bottom: 20px;
+    right: 25px;
+}
+
+
+/* =========================================================
+   FINAL SURPRISE
+========================================================= */
+
+.final-section {
+
+    min-height: 90vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 80px 20px;
+}
+
+.final-card {
+
+    max-width: 650px;
+
+    padding: 60px 35px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.6);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 30px 80px rgba(110,50,80,0.15);
+}
+
+.final-heart {
+
+    font-size: 110px;
+
+    color: #e74e78;
+
+    animation: heartbeat 1.4s infinite;
+}
+
+.final-card h2 {
+
+    font-family: "Caveat", cursive;
+
+    font-size: 55px;
+
+    color: #d9426c;
+}
+
+.final-card p {
+
+    margin-top: 15px;
+
+    line-height: 1.8;
+}
+
+.surprise-button {
+
+    margin-top: 30px;
+
+    padding: 15px 30px;
+
+    border-radius: 100px;
+
+    background: #e6537d;
+
+    color: white;
+
+    box-shadow:
+        0 15px 30px rgba(220,70,110,0.25);
+
+    transition: 0.3s;
+}
+
+.surprise-button:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+}
+
+.final-message {
+
+    display: none;
+
+    margin-top: 35px;
+
+    animation: cardAppear 0.8s ease;
+}
+
+.final-message h3 {
+
+    font-family: "Caveat", cursive;
+
+    color: #dc416d;
+
+    font-size: 42px;
+}
+
+.final-message p {
+
+    margin-top: 10px;
+}
+
+.final-message span {
+
+    display: block;
+
+    margin-top: 20px;
+
+    font-family: "Caveat", cursive;
+
+    color: #df426e;
+
+    font-size: 32px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    text-align: center;
+
+    padding: 30px;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 23px;
+
+    color: #9c526d;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width: 600px) {
+
+    .quiz-card {
+
+        padding: 40px 22px;
+    }
+
+    .quiz-card h1 {
+
+        font-size: 48px;
+    }
+
+    .photo-cloud {
+
+        height: 500px;
+    }
+
+    .photo {
+
+        width: 125px;
+
+        height: 160px;
+    }
+
+    .photo1 {
+
+        left: 2%;
+    }
+
+    .photo2 {
+
+        right: 2%;
+    }
+
+    .photo3 {
+
+        left: 8%;
+    }
+
+    .photo4 {
+
+        right: 8%;
+    }
+
+    .photo5 {
+
+        left: 33%;
+
+        top: 155px;
+    }
+
+    .letter {
+
+        padding: 55px 28px;
+
+        font-size: 20px;
+    }
+
+    .letter h2 {
+
+        font-size: 34px;
+    }
+
+    .big-love {
+
+        font-size: 50px;
+    }
+
+    .special-line {
+
+        font-size: 24px;
+    }
+
+    .signature {
+
+        font-size: 25px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND EFFECTS
+====================================================== -->
+
+<div id="hearts"></div>
+<div id="bubbles"></div>
+
+
+
+<!-- =====================================================
+     QUIZ PAGE
+====================================================== -->
+
+<section id="quizPage">
+
+    <div class="quiz-card">
+
+        <div class="quiz-heart">
+            ♡
+        </div>
+
+        <p class="quiz-small">
+            A tiny little surprise for you My Love...
+        </p>
+
+        <h1>
+            Heyyy
+            <span> My Kavarchi Naayagan Pranav💗🖤</span>
+        </h1>
+
+        <p class="quiz-subtitle">
+            Before I let you enter my little love world,
+            you have to pass this very serious
+            boyfriend test 👀🫂😍
+        </p>
+
+
+        <div id="quizContent">
+
+            <div class="question-number" id="questionNumber">
+                Question 1 of 5
+            </div>
+
+            <div class="question" id="question">
+                Ready?
+            </div>
+
+            <div class="answers" id="answers"></div>
+
+        </div>
+
+
+        <div class="quiz-success" id="quizSuccess">
+
+            Okayyy... you passed babyyy🥹💗🫂
+
+            <br><br>
+
+            Your little surprise is loading...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MAIN LOVE WEBSITE
+====================================================== -->
+
+<main id="mainPage">
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="hero">
+
+        <p class="eyebrow">
+            made with all my heart and love 
+        </p>
+
+        <h1>
+
+            Happy Boyfriend's Day
+
+            <span>
+                My Kavarchi Naayagan Pranav💗🖤
+            </span>
+
+        </h1>
+
+        <p class="hero-description">
+
+            If love had a name in my world,
+            it would probably be yours.
+
+            <br>
+
+            So I made this tiny little corner
+            of the internet just for you 💗🫶
+
+        </p>
+
+        <button
+            class="open-letter"
+            onclick="openLetter()">
+
+            Open my letter 💌🖤
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MEMORIES
+    ================================================== -->
+
+    <section class="memories">
+
+        <p class="section-label">
+            little pieces of us
+        </p>
+
+        <h2>
+            Our tiny universe 🌙🫶
+        </h2>
+
+        <div class="photo-cloud">
+
+
+            <!-- CHANGE THESE IMAGE NAMES -->
+
+            <img
+                src="WhatsApp Image 2026-10-02 at 10.10.31 PM (1).jpeg"
+                class="photo photo1"
+                alt="Our memory">
+
+
+            <img
+                src="WhatsApp Image 2026-10-02 at 10.10.31 PM (2).jpeg"
+                class="photo photo2"
+                alt="Our memory">
+
+
+            <img
+                src="WhatsApp Image 2026-10-02 at 10.10.31 PM.jpeg"
+                class="photo photo3"
+                alt="Our memory">
+
+
+            <img
+                src="WhatsApp Image 2026-10-02 at 10.14.43 PM.jpeg"
+                class="photo photo4"
+                alt="Our memory">
+
+
+            <img
+                src="WhatsApp Image 2026-10-02 at 10.15.08 PM.jpeg"
+                class="photo photo5"
+                alt="Our memory">
+
+
+            <div class="center-heart">
+                ♡
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         LOVE LETTER
+    ================================================== -->
+
+    <section
+        class="letter-section"
+        id="letter">
+
+        <div class="letter">
+
+
+            <div class="letter-heart one">
+                ♡
+            </div>
+
+            <div class="letter-heart two">
+                ♡
+            </div>
+
+
+            <p class="letter-date">
+                To my Favourite person,
+            </p>
+
+
+            <h2>
+                Dear Kavarchi Naayagan Pranav💗🖤,
+            </h2>
+
+
+            <p>
+                I don't really know where to begin, what to say and how to express,
+                because whenever I think about you,
+                somehow words never seem enough to express my feelings.
+            </p>
+
+
+            <p>
+                But today, I just wanted to remind you that
+                how incredibly special you are to me and how much u mean to me🫶.
+            </p>
+
+
+            <p>
+                You are not just someone I love🫂.
+                You are the person who makes my ordinary
+                moments feel like every little memories special 
+                that I want to keep forever cherished and safe inside me always.
+            </p>
+
+
+            <p>
+                I love the way you make me smile,
+                the way you make me feel safe and secured when Im around you❤️‍🩹,
+                our late night conversations,video calls, our chats, reels...etc,
+                our silly moments where my inner child is happy and safe,
+                the teasing,
+                the laughter,
+                and even those tiny things
+                you probably don't realise that I notice...
+                And each time when i say that "I Love You❤️‍🩹" it means alotto say from my side as you my past, present it was never just 3 words to me🫂.
+            </p>
+
+
+            <p>
+                Somewhere between all those loves, laughter,
+                night conversations, fights🫂, teasing, tears, sadness, misunderstandings and
+                beautiful moments....
+                you still became my favourite person in my life❤️🫂.
+                we may fight, get mad, missunderstood each other but we should nver give up on us and our relationship is purely based on our Trust, Love, Understanding, Sacrifices.💗
+            </p>
+
+
+            <p>
+                And if I had to choose again,
+                in every universe,
+                in every lifetime,
+                I think my heart would still
+                find its way back to you❤️‍🩹
+                And Thank you for coming bavk to me My Love 🥹🫂.
+            </p>
+
+
+            <p class="special-line">
+
+                You are my favourite notification,
+                my favourite chapter,
+                my favourite smile,
+                my kids father,
+                my safe place,
+                and my favourite person 💗🫶
+
+            </p>
+
+
+            <p>
+                So on this Boyfriend's Day,
+                I just want to say...
+            </p>
+
+
+            <p class="big-love">
+                I love you so much and i miss you 💗🫂
+            </p>
+
+
+            <p>
+                More than these words can explain.
+                More than this tiny website can hold.
+            </p>
+
+
+            <p>
+                Thank you for being you and coming back to me🥹😭
+            </p>
+
+
+            <p class="signature">
+
+                Forever yours,
+
+                <br>
+
+                <span>
+                    your Mrs.pranav♡ 
+                </span>
+
+            </p>
+
+
+            <div class="letter-heart three">
+                ♡
+            </div>
+
+            <div class="letter-heart four">
+                ♡
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FINAL SURPRISE
+    ================================================== -->
+
+    <section class="final-section">
+
+        <div class="final-card">
+
+            <div class="final-heart">
+                ♥
+            </div>
+
+            <h2>
+                One last thing...
+            </h2>
+
+            <p>
+
+                If you ever forget
+                how loved you are,
+
+                <br>
+
+                come back here.💗
+
+            </p>
+
+
+            <button
+                class="surprise-button"
+                onclick="showSurprise()">
+
+                Tap for one more surprise 💗
+
+            </button>
+
+
+            <div
+                class="final-message"
+                id="finalMessage">
+
+                <h3>
+                    It's always going to be you.❤️🫂
+                </h3>
+
+                <p>
+
+                    My Kavarchi Naayagan Pranav🖤,
+
+                    <br>
+
+                    my favourite person❤️‍🩹,
+
+                    <br>
+
+                    my favourite smile😁,
+
+                    <br>
+
+                    my home in human form 🥹🫂
+
+                </p>
+
+                <span>
+                    ♡ I love you ♡
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        Made with an unreasonable
+        amount of love for Kavarchi Naayagan Pr ♡
+
+    </footer>
+
+</main>
+
+
+
+<script>
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+const questions = [
+
+    {
+        question:
+        "Who is the most handsome person in my universe? 👀",
+
+        answers: [
+            "Pattu 😌",
+            "My Kavarchi Naayagan Pranav🖤",
+            "My pillow",
+            "My phone"
+        ]
+    },
+
+    {
+        question:
+        "What happens whenever I see you? 🥹",
+
+        answers: [
+            "I smile like an idiot",
+            "My heart goes boom boom",
+            "I forget what I was saying",
+            "All of the above 🖤"
+        ]
+    },
+
+    {
+        question:
+        "Who permanently occupies a giant part of my heart? 💗",
+
+        answers: [
+            "Fried rice",
+            "My phone",
+            "Kavarchi Naayagan Pranav🖤",
+            "Pattu"
+        ]
+    },
+
+    {
+        question:
+        "What is my favourite thing about you? 🥺",
+
+        answers: [
+            "Your smile",
+            "Your personality",
+            "The way you make me feel",
+            "Everything about you 🖤"
+        ]
+    },
+
+    {
+        question:
+        "What should happen after you finish this website? 👀",
+
+        answers: [
+            "A hug",
+            "A kiss",
+            "A very tight hug",
+            "All of the above 😌🖤"
+        ]
+    }
+
+];
+
+
+let currentQuestion = 0;
+
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+const question =
+    document.getElementById("question");
+
+const answers =
+    document.getElementById("answers");
+
+
+function loadQuestion() {
+
+    const current =
+        questions[currentQuestion];
+
+
+    questionNumber.textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
+
+    question.textContent =
+        current.question;
+
+
+    answers.innerHTML = "";
+
+
+    current.answers.forEach(answerText => {
+
+        const button =
+            document.createElement("button");
+
+
+        button.className =
+            "answer";
+
+
+        button.textContent =
+            answerText;
+
+
+        button.addEventListener(
+            "click",
+            nextQuestion
+        );
+
+
+        answers.appendChild(button);
+
+    });
+
+}
+
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    }
+
+    else {
+
+        finishQuiz();
+
+    }
+
+}
+
+
+function finishQuiz() {
+
+    document.getElementById("quizContent")
+        .style.display = "none";
+
+
+    document.getElementById("quizSuccess")
+        .style.display = "block";
+
+
+    createHeartExplosion();
+
+
+    setTimeout(() => {
+
+        document.getElementById("quizPage")
+            .style.display = "none";
+
+
+        document.getElementById("mainPage")
+            .style.display = "block";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }, 2500);
+
+}
+
+
+loadQuestion();
+
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+
+    heart.className =
+        "heart";
+
+
+    const heartCharacters = [
+        "♥",
+        "♡",
+        "❤",
+        "💕",
+        "💗",
+        "💖",
+        "💓"
+    ];
+
+
+    heart.textContent =
+        heartCharacters[
+            Math.floor(
+                Math.random() *
+                heartCharacters.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+        (12 + Math.random() * 25) + "px";
+
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 7) + "s";
+
+
+    document
+        .getElementById("hearts")
+        .appendChild(heart);
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 13000);
+
+}
+
+
+setInterval(createHeart, 300);
+
+
+
+/* =========================================================
+   FLOATING BUBBLES
+========================================================= */
+
+function createBubble() {
+
+    const bubble =
+        document.createElement("div");
+
+
+    bubble.className =
+        "bubble";
+
+
+    const size =
+        15 + Math.random() * 75;
+
+
+    bubble.style.width =
+        size + "px";
+
+
+    bubble.style.height =
+        size + "px";
+
+
+    bubble.style.left =
+        Math.random() * 100 + "vw";
+
+
+    bubble.style.animationDuration =
+        (7 + Math.random() * 8) + "s";
+
+
+    document
+        .getElementById("bubbles")
+        .appendChild(bubble);
+
+
+    setTimeout(() => {
+
+        bubble.remove();
+
+    }, 16000);
+
+}
+
+
+setInterval(createBubble, 650);
+
+
+
+/* =========================================================
+   OPEN LETTER
+========================================================= */
+
+function openLetter() {
+
+    document
+        .getElementById("letter")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+/* =========================================================
+   FINAL SURPRISE
+========================================================= */
+
+function showSurprise() {
+
+    const message =
+        document.getElementById("finalMessage");
+
+
+    message.style.display =
+        "block";
+
+
+    createHeartExplosion();
+
+
+    setTimeout(() => {
+
+        createHeartExplosion();
+
+    }, 700);
+
+
+    setTimeout(() => {
+
+        createHeartExplosion();
+
+    }, 1400);
+
+}
+
+
+
+/* =========================================================
+   HEART EXPLOSION
+========================================================= */
+
+function createHeartExplosion() {
+
+    for (let i = 0; i < 35; i++) {
+
+        setTimeout(() => {
+
+            const heart =
+                document.createElement("div");
+
+
+            heart.className =
+                "heart";
+
+
+            heart.textContent =
+                ["❤️","💗","💖","💕","♡","♥"][
+                    Math.floor(
+                        Math.random() * 6
+                    )
+                ];
+
+
+            heart.style.left =
+                (40 + Math.random() * 20) + "vw";
+
+
+            heart.style.bottom =
+                (20 + Math.random() * 30) + "vh";
+
+
+            heart.style.fontSize =
+                (15 + Math.random() * 30) + "px";
+
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 4) + "s";
+
+
+            document
+                .getElementById("hearts")
+                .appendChild(heart);
+
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 8000);
+
+        }, i * 60);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
